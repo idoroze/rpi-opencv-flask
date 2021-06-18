@@ -2,9 +2,8 @@ import serial
 import requests
 import socket
 if __name__ == '__main__':
-    hostname = socket.gethostname()
-    ip = socket.gethostbtname(hostname)
-    url = "http://"+str(ip)":5000/"
+    ip = socket.gethostbtname(socket.gethostname())
+    url = "http://"+str(ip)+":5000/"
     ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     ser.flush()
     while True:
@@ -17,7 +16,6 @@ if __name__ == '__main__':
                     requests.post(url+'set_stat',{"num":2})
                 if line == "b":
                     requests.post(url+'set_stat',{"num":3})
-
             except:
                 print("error appear")
             print(line)
